@@ -2,7 +2,7 @@
   "name": "absolute-json",
   "title": "absolute-json",
   "description": "A complete tool to maintain all the front-end through a json",
-  "version": "1.0",
+  "version": "0.7",
   "homepage": "https://github.com/RiCoTeRoX/absolute-json",
   "author": "Danny Ralde",
   "main": "src/absolute-json.json",
