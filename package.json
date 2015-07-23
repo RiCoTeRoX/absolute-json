@@ -1,8 +1,11 @@
 {
   "name": "absolute-json",
+  "title": "absolute-json",
   "description": "A complete tool to maintain all the front-end through a json",
-  "version": "0.7",
-  "author": "Leandro Cabrera",
+  "version": "1.0",
+  "homepage": "https://github.com/RiCoTeRoX/absolute-json",
+  "author": "Danny Ralde",
+  "main": "src/absolute-json.json",
   "dependencies": {
   },
   "scripts": {
