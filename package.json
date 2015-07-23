@@ -1,10 +1,16 @@
 {
-  "name": "absolute-json",
-  "title": "absolute-json",
-  "description": "A complete tool to maintain all the front-end through a json",
+  "name": "absolutejson",
   "version": "0.7",
+  "title": "absolutejson",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RiCoTeRoX/absolute-json.git"
+  },
+  "description": "A complete tool to maintain all the front-end through a json",
   "homepage": "https://github.com/RiCoTeRoX/absolute-json",
-  "author": "Danny Ralde",
+  "authors": [
+    "Danny <ricoterox@gmail.com>"
+  ],
   "main": "src/absolute-json.json",
   "dependencies": {
   },
