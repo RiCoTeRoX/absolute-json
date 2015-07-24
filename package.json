@@ -11,7 +11,7 @@
   "authors": [
     "Danny <ricoterox@gmail.com>"
   ],
-  "main": "src/absolute-json.json",
+  "main": "src/absolute-json.js",
   "dependencies": {
   },
   "scripts": {
