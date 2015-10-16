@@ -13,7 +13,8 @@
   ],
   "main": "src/absolute-json.js",
   "dependencies": {
-  },
+    "jquery": ">2.0.0"
+  }
   "scripts": {
   },
   "devDependencies": {
