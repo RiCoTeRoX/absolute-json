@@ -2,5 +2,8 @@
   "name": "absolute-json",
   "version": "1.0.0",
   "description": "A complete tool to maintain all the front-end through a json",
-  "main": "src/absolute-json.js"
+  "main": "src/absolute-json.js",
+  "dependencies": {
+    "jquery": ">2.0.0"
+  }
 }
