@@ -1,0 +1,10 @@
+{
+    "preset": "crockford",
+    "validateIndentation": 2,
+    "requireSpaceBeforeKeywords": [ "else", "catch" ],
+    "disallowMultipleLineBreaks": true,
+    "disallowMultipleSpaces": true,
+    "disallowPaddingNewlinesInBlocks": true,
+    "disallowSpaceAfterObjectKeys": true,
+    "requireLineBreakAfterVariableAssignment": true
+}
