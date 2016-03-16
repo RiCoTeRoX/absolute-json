@@ -1,5 +1,5 @@
 (function (root,$) {
-  var abjson = {},
+  var abjson = Object.create(null, {}),
 
   // defaults
   options = {
@@ -160,9 +160,7 @@
    */
   if (typeof define === 'function' && define.amd) {
     define(function () {
-      return {
-        abjson: abjson
-      };
+      return abjson;
     });
   }
 
