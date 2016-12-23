@@ -1,73 +1,68 @@
 var expect = chai.expect;
 
-describe('Initialization', function() {
-	
-	var abjson = window.abjson;
-    
-  it('should be exist', function() {
-		expect(abjson).to.exist;
-	});
+describe('Initialization', function () {
+  var abjson = window.abjson;
 
-  it('expect a resource url or a resource for json', function() {
-		if (abjson.options.sourceUrl)
-			expect(abjson.options.sourceUrl).to.be.a("string");
-		else if (abjson.options.source)
-			expect(abjson.options.source).to.be.an("object");
-		else throw new Error('Expected [sourceUrl] or [source]');
-	});
+  it('should be exist', function () {
+    expect(abjson).to.exist;
+  });
 
- 	it('should load a json', function() {
-		expect(abjson.options.localeObject).to.be.a("object").to.not.be.empty;
-	});
+  it('expect a resource url or a resource for json', function () {
+    if (abjson.options.sourceUrl)
+     expect(abjson.options.sourceUrl).to.be.a("string");
+    else if (abjson.options.source)
+     expect(abjson.options.source).to.be.an("object");
+    else throw new Error('Expected [sourceUrl] or [source]');
+  });
 
+ 	it('should load a json', function () {
+    expect(abjson.options.localeObject).to.be.a("object").to.not.be.empty;
+  });
 });
 
-describe('Keys', function() {
-	
-	var abjson = window.abjson;
-    
-	it('expect a getter function', function() {
-		expect(abjson.get).to.exist;
-	});
+describe('Keys', function () {
+  var abjson = window.abjson;
 
-	it('expect a value for a given key', function() {
-		expect(abjson.get("google")).to.equal("http://www.google.com");
-	});
+  it('expect a getter function', function () {
+    expect(abjson.get).to.exist;
+  });
 
-	it('expect an undefined value for an non existing key', function() {
-		expect(abjson.get("xswq23d")).to.be.undefined;
-	});
+  it('expect a value for a given key', function () {
+    expect(abjson.get("google")).to.equal("http://www.google.com");
+  });
 
-	it('expect a value for an string with keys', function() {
-		expect(abjson.get("buttons.footer.github.text")).to.equal("Explore GitHub");
-	});
+  it('expect an undefined value for an non existing key', function () {
+    expect(abjson.get("xswq23d")).to.be.undefined;
+  });
 
+  it('expect a value for an string with keys', function () {
+    expect(abjson.get("buttons.footer.github.text")).to.equal("Explore GitHub");
+  });
 });
 
-describe('Keys templating', function(){
+describe('Keys templating', function () {
+  var abjson = window.abjson;
 
-	var abjson = window.abjson;
+  it('expect get to support simple templating with %1 %2 -like', function () {
+    var nickname = 'vodkaGuy';
+    expect(abjson.get("greet", nickname)).to.equal("hello vodkaGuy");
+  });
 
-	it('expect get to support simple templating with %1 %2 -like', function(){
-		var nickname = 'vodkaGuy';
-		expect(abjson.get("greet", nickname)).to.equal("hello vodkaGuy");
-	});
+  it('expect get to leave %1 as it is if no extra parameter provided', function () {
+   expect(abjson.get("greet")).to.equal("hello %1");
+  });
 
-	it('expect get to leave %1 as it is if no extra parameter provided', function(){
-		expect(abjson.get("greet")).to.equal("hello %1");
-	});
+  it('expect get to support multiple parameters', function () {
+   expect(abjson.get("points", "100", "1")).to.equal("you points: 100 - your position: 1");
+  });
 
-	it('expect get to support multiple parameters', function(){
-		expect(abjson.get("points", "100", "1")).to.equal("you points: 100 - your position: 1");
-	});
+  it('expect get to support multiple parameters with an string key', function () {
+   expect(abjson.get("buttons.footer.home.text", "Json")).to.equal("Absolut Json");
+  });
 
-	it('expect get to support multiple parameters with an string key', function(){
-		expect(abjson.get("buttons.footer.home.text", "Json")).to.equal("Absolut Json");
-	});
-
-	it('expect get to replace %1 but not %2 if only one extra parameter provided', function(){
-		expect(abjson.get("points", "100")).to.equal("you points: 100 - your position: %2");
-	});
+  it('expect get to replace %1 but not %2 if only one extra parameter provided', function () {
+   expect(abjson.get("points", "100")).to.equal("you points: 100 - your position: %2");
+  });
 
 	it('expect get to support repeated values in the template', function(){
 		expect(abjson.get("confirm", "blue", "red")).to
@@ -85,15 +80,15 @@ describe('Keys templating', function(){
 });
 
 describe('DOM manipulation', function(){
-	
+
 	var abjson = window.abjson;
 
 	it("should be translated all the body", function (){
 
 		$("body").abjson();
-				
+
 		expect($(".linkGitHub").html()).to.equal("Explore GitHub");
-		
+
 	});
 
 	it("should be translated all the attr", function(){
