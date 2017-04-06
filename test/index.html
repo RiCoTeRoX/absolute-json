@@ -9,16 +9,7 @@
 	<div id="mocha"></div>
 
 	<div class="translate" style="display:block">
-
-		<a class="linkGitHub" data-abjson="github" href=""></a>
-
-		<span data-abjson="google"></span>
-
-		<img src="" alt="" data-abjson="logo">
-
-		<span class="points" data-abjson="points" data-abjson-r="14|5"></span>
-		<span class="confirm" data-abjson="confirm" data-abjson-r="blue|red"></span>
-		<a class="buttonGitHub" data-abjson="buttons.footer.github" href=""></a>
+		
 	</div>
 </body>
 
@@ -35,9 +26,9 @@
 
 	window.onload = function() {
 
-/* -> Uncomment to test static file source
+// -> Uncomment to test static file source
 
-		$.getJSON("locales/en.json", function(data){
+		/*$.getJSON("locales/en.json", function(data){
 
 			abjson.load({
 				source : data
@@ -48,8 +39,7 @@
 					mocha.run();
 			});
 
-		});
-*/
+		});*/
 
 		abjson.load({
 			sourceUrl : "locales/en.json"

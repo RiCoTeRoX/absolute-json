@@ -42,7 +42,7 @@
     }
   }
 
-  function getPropertyByString(obj,str) {
+  function getPropertyByString(obj, str) {
     var n, a = str.split('.');
     while (a.length) {
       n = a.shift();
@@ -89,10 +89,6 @@
 
     if (options.localeObject[key]) {
       r = wildcardReplace(options.localeObject[key], Array.prototype.slice.call(arguments, 1));
-    } else {
-      if (key.indexOf(".") > 0) {
-        r = wildcardReplace(getPropertyByString(options.localeObject, key), Array.prototype.slice.call(arguments, 1));
-      }
     }
 
     return r;
@@ -128,6 +124,7 @@
   }
 
   function wildcardReplace(text, replaceElements) {
+    console.log(replaceElements);
     var i,
         replacedText = text;
 
