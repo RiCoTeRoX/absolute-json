@@ -124,7 +124,6 @@
   }
 
   function wildcardReplace(text, replaceElements) {
-    console.log(replaceElements);
     var i,
         replacedText = text;
 
