@@ -9,7 +9,6 @@
     customJsonParser: null
   };
 
-  // helpers
   function AbjError(name, message) {
     this.name = name;
     this.message = message || "error";
