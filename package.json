@@ -1,27 +1,22 @@
 {
   "name": "absolute-json",
-  "version": "1.9.1",
-  "description": "=========",
+  "version": "2.0.0",
+  "description": "None",
   "main": "src/absolute-json.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "test"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/RiCoTeRoX/absolute-json.git"
   },
-  "authors": [
-    "Danny <ricoterox@gmail.com>"
-  ],
+  "author": "Danny Ralde",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/RiCoTeRoX/absolute-json/issues"
   },
-  "homepage": "https://github.com/RiCoTeRoX/absolute-json#readme",
-  "dependencies": {
-    "jquery": "2.2.4"
-  }
+  "homepage": "https://github.com/RiCoTeRoX/absolute-json#readme"
 }
