@@ -1,13 +1,14 @@
-(function (root,$) {
-  var abjson = Object.create(null, {}),
+(function(root, $) {
+  const abjson = Object.create(null, {});
 
-  // defaults
-  options = {
-    source: null,
-    sourceUrl: "",
-    localeObject: {},
-    customJsonParser: null
-  };
+    // defaults
+    
+const options = {
+      source: null,
+      sourceUrl: "",
+      localeObject: {},
+      customJsonParser: null
+    };
 
   function AbjError(name, message) {
     this.name = name;
@@ -18,7 +19,7 @@
   AbjError.prototype.constructor = AbjError;
 
   function forEach(obj, iterator, context) {
-    var i, key;
+    let i; let key;
     if (obj === null) {
       return;
     }
@@ -42,7 +43,10 @@
   }
 
   function getPropertyByString(obj, str) {
-    var n, a = str.split('.');
+    let n;
+
+      
+const a = str.split(".");
     while (a.length) {
       n = a.shift();
       if (n in obj) {
@@ -70,39 +74,42 @@
 
     $.ajax({
       url: options.sourceUrl,
-      type: 'get',
-      dataType: 'json',
+      type: "get",
+      dataType: "json",
       cache: false,
-      success: function (data) {
+      success(data) {
         options.localeObject = data;
         callback();
       },
-      error: function (xhr, textStatus) {
+      error(xhr, textStatus) {
         callback(new AbjError(textStatus.toUpperCase(), xhr.statusText));
       }
     });
   }
 
-  function get(key) {
-    var r;
-
-    if (options.localeObject[key]) {
-      r = wildcardReplace(options.localeObject[key], Array.prototype.slice.call(arguments, 1));
-    }
-
-    return r;
+  function get(key, replacements) {
+    return options.localeObject[key]
+      ? wildcardReplace(options.localeObject[key], replacements || [])
+      : undefined;
   }
 
   function updateElements(el, opt) {
-    var elKey = el.attr("data-abjson"),
-        updateElementsdText = get(elKey);
+    const elKey = el.attr("data-abjson");
+
+      
+const updateElementsdText = get(elKey);
 
     if (typeof updateElementsdText !== "undefined") {
       if (updateElementsdText === Object(updateElementsdText)) {
-        forEach(updateElementsdText, function (val, key) {
+        forEach(updateElementsdText, (val, key) => {
           if (key === "text") {
             if (el.attr("data-abjson-r")) {
-              el.html(wildcardReplace(updateElementsdText, el.attr("data-abjson-r").split("|")));
+              el.html(
+                wildcardReplace(
+                  updateElementsdText,
+                  el.attr("data-abjson-r").split("|")
+                )
+              );
             } else {
               el.html(val);
             }
@@ -110,34 +117,48 @@
             el.attr(key, val);
           }
         });
-      } else {
-        if (el.attr("data-abjson-r")) {
-          el.html(wildcardReplace(updateElementsdText, el.attr("data-abjson-r").split("|")));
+      } else if (el.attr("data-abjson-r")) {
+          el.html(
+            wildcardReplace(
+              updateElementsdText,
+              el.attr("data-abjson-r").split("|")
+            )
+          );
         } else {
           el.html(updateElementsdText);
         }
-      }
     } else {
-      el.html(elKey + " NOT FOUND");
+      el.html(`${elKey  } NOT FOUND`);
     }
   }
 
   function wildcardReplace(text, replaceElements) {
-    var i,
-        replacedText = text;
+    let i;
+
+      
+let replacedText = text;
 
     for (i = 0; i < replaceElements.length; i++) {
-      replacedText = replacedText.replace(new RegExp("%" + (i + 1), 'ig'), replaceElements[i]);
+      if (typeof replaceElements[i].replace === "function") {
+        replaceElements[i] = replaceElements[i].replace(/%{(.+?)}/g, (
+          $0,
+          $1
+        ) => get($1));
+      }
+      replacedText = replacedText.replace(
+        new RegExp(`%${  i + 1}`, "ig"),
+        replaceElements[i]
+      );
     }
 
     return replacedText;
   }
 
   if (!root.abjson) {
-    $.fn.abjson = function (options) {
-      var elements = $("[data-abjson]", this);
+    $.fn.abjson = function(options) {
+      const elements = $("[data-abjson]", this);
 
-      elements.each(function () {
+      elements.each(function() {
         updateElements($(this), options);
       });
     };
