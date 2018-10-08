@@ -1,17 +1,26 @@
 {
   "name": "absolute-json",
-  "version": "1.9",
-  "title": "absolute-json",
+  "version": "1.9.1",
+  "description": "=========",
+  "main": "src/absolute-json.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/RiCoTeRoX/absolute-json.git"
   },
-  "description": "A complete tool to maintain all the front-end through a json",
-  "homepage": "https://github.com/RiCoTeRoX/absolute-json",
   "authors": [
     "Danny <ricoterox@gmail.com>"
   ],
-  "main": "src/absolute-json.js",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RiCoTeRoX/absolute-json/issues"
+  },
+  "homepage": "https://github.com/RiCoTeRoX/absolute-json#readme",
   "dependencies": {
     "jquery": "2.2.4"
   }
